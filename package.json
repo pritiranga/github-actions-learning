@@ -1,0 +1,21 @@
+{
+  "name": "github-actions-learning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  	"start": "node index.js",
+  	"test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pritiranga/github-actions-learning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pritiranga/github-actions-learning/issues"
+  },
+  "homepage": "https://github.com/pritiranga/github-actions-learning#readme"
+}
