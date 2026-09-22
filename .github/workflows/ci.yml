@@ -46,6 +46,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-
       - name: Build Application
-        run: echo "Building application.."
+        run: |
+          mkdir build
+          echo "This is my application build." > build/app.txt
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-build
+          path: build/
+
