@@ -58,7 +58,7 @@ jobs:
           path: build/
 
       - name: Download build artifacts
-        uses: actions/download-artifacts@v5
+        uses: actions/download-artifact@v5
         with:
           name: my-build
           path: build/
