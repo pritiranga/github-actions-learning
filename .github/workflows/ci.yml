@@ -57,3 +57,14 @@ jobs:
           name: my-build
           path: build/
 
+      - name: Download build artifacts
+        uses: actions/download-artifacts@v5
+        with:
+          name: my-build
+          path: build/
+
+      - name: Show downloaded files
+        run: ls -la build/
+
+      - name: Read application files
+        run: cat build/app.txt
