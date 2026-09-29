@@ -70,10 +70,10 @@ jobs:
         run: cat build/app.txt
 
       - name: Test secret
-        run: echo "Secret is ${{secrets.MY_SECRET}}"
+        run: echo "Secret is ${{ secrets.MY_SECRET }}"
 
       - name: Test Variables
-        run: echo "Variable is ${{vars.CURRENT_ENVIRONMENT}}"
+        run: echo "Variable is ${{ vars.CURRENT_ENVIRONMENT }}"
 
   deploy-dev:
     environment: dev
@@ -82,7 +82,7 @@ jobs:
 
     steps:
       - name: Show environment
-        run: echo "Deploying to ${{vars.APP_ENV}}"
+        run: echo "Deploying to ${{ vars.APP_ENV }}"
 
   deploy-prod:
     environment: prod
@@ -91,4 +91,4 @@ jobs:
 
     steps:
       - name: Show environment
-        run: echo "Deploying to ${{vars.APP_ENV}}"
+        run: echo "Deploying to ${{ vars.APP_ENV }}"
