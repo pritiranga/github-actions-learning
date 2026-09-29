@@ -70,7 +70,25 @@ jobs:
         run: cat build/app.txt
 
       - name: Test secret
-        run: echo "Secret is ${{secrets.MY_SECRET }}"
+        run: echo "Secret is ${{secrets.MY_SECRET}}"
 
       - name: Test Variables
         run: echo "Variable is ${{vars.CURRENT_ENVIRONMENT}}"
+
+  deploy-dev:
+    environment: dev
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show environment
+        run: echo "Deploying to ${{vars.APP_ENV}}"
+
+  deploy-prod:
+    environment: prod
+    needs: deploy-dev
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show environment
+        run: echo "Deploying to ${{vars.APP_ENV}}"
