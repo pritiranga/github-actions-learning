@@ -68,3 +68,7 @@ jobs:
 
       - name: Read application files
         run: cat build/app.txt
+
+
+      - name: Test secret
+        run: echo "Secret is ${{secrets.MY_SECRET }}"
