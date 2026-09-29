@@ -82,7 +82,7 @@ jobs:
 
     steps:
       - name: Show environment
-        run: echo "Deploying to ${{ vars.APP_ENV }}"
+        run: echo "Deploying to ${{ vars.APP_URL }}"
 
   deploy-prod:
     environment: prod
@@ -91,4 +91,4 @@ jobs:
 
     steps:
       - name: Show environment
-        run: echo "Deploying to ${{ vars.APP_ENV }}"
+        run: echo "Deploying to ${{ vars.APP_URL }}"
