@@ -7,14 +7,27 @@ jobs:
   debug-oidc:
     runs-on: ubuntu-latest
 
-    permissions:
-      id-token: write
-      contents: read
-
     environment: prod
 
+    permissions:
+      contents: read
+      id-token: write
+
     steps:
-      - name: Debug OIDC claims
-        uses: github/actions-oidc-debugger@main
-        with:
-            audience: sts.amazonaws.com
+      - name: Get OIDC token and show claims
+        run: |
+          RESPONSE=$(curl -s \
+            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=sts.amazonaws.com")
+
+          TOKEN=$(echo "$RESPONSE" | jq -r '.value')
+
+          PAYLOAD=$(echo "$TOKEN" | cut -d '.' -f 2)
+
+          # Add base64 padding
+          PADDING=$((4 - ${#PAYLOAD} % 4))
+          if [ "$PADDING" -ne 4 ]; then
+            PAYLOAD="${PAYLOAD}$(printf '=%.0s' $(seq 1 $PADDING))"
+          fi
+
+          echo "$PAYLOAD" | base64 -d | jq '{sub: .sub, aud: .aud}'
