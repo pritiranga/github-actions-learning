@@ -1,0 +1,20 @@
+name: OIDC Debug
+
+on:
+  workflow_dispatch:
+
+jobs:
+  debug-oidc:
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
+
+    environment: prod
+
+    steps:
+      - name: Debug OIDC claims
+        uses: github/actions-oidc-debugger@main
+        with:
+            audience: sts.amazonaws.com
